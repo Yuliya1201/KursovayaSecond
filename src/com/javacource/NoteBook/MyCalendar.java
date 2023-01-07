@@ -162,27 +162,27 @@ public class MyCalendar {
     private static Repeatable createTask(int occurance, String title, String description, TaskType taskType,
                                          LocalDateTime localDateTime) throws WrongInputException {
         return switch (occurance) {
-            case 1 {
+            case 0: {
                 OncelyTask oncelyTask = new OncelyTask(title, description, taskType, localDateTime);
                 actualTasks.put(oncelyTask.getId(), oncelyTask);
                 return oncelyTask;
             }
-            case 2: {
+            case 1: {
                 DailyTask task = new DailyTask(title, description, taskType, localDateTime);
                 actualTasks.put(task.getId(), task);
                 return task;
             }
-            case 3: {
+            case 2: {
                 WeeklyTask task = new WeeklyTask(title, description, taskType, localDateTime);
                 actualTasks.put(task.getId(), task);
                 return task;
             }
-            case 4: {
+            case 3: {
                 MonthlyTask task = new MonthlyTask(title, description, taskType, localDateTime);
                 actualTasks.put(task.getId(), task);
                 return task;
             }
-            case 5: {
+            case 4: {
                 YearlyTask task = new YearlyTask(title, description, taskType, localDateTime);
                 actualTasks.put(task.getId(), task);
                 return task;
