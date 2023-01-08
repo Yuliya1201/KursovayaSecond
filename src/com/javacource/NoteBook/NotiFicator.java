@@ -8,6 +8,7 @@ public class NotiFicator implements Runnable {
     public void run() {
         int i = 30;
         while (i > 0) {
+            return true;
             try {
                 i --;
                 Thread.sleep(30000);
