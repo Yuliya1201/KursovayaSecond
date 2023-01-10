@@ -1,20 +1,18 @@
+package com.javacource.NoteBook;
+
 import com.javacource.NoteBook.MyCalendar;
-import com.javacource.NoteBook.Repeatable;
-import com.javacource.NoteBook.Task;
-import com.javacource.NoteBook.TaskType;
-import com.javacource.NoteBook.ValidateUtils;
-import com.javacource.NoteBook.MonthlyTask;
 
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
+public class ScannerRun implements Runnable {
+    @Override
+    public void run() {
+        try  (Scanner scanner = new Scanner(System.in)) {
             label:
             while (true) {
-                System.out.println("Выбурите пункт меню:");
+                System.out.println("Выберите пункт меню");
                 printMenu();
-                if (scanner.hasNextInt()) {
+                if (scanner.hasNext()) {
                     int menu = scanner.nextInt();
                     switch (menu) {
                         case 1:
@@ -34,30 +32,26 @@ public class Main {
                             break;
                         case 6:
                             MyCalendar.getGroupedByDate();
-                            break;
-                        case 0:
                             break label;
+
                     }
                 } else {
                     scanner.next();
-                    System.out.println("Выберите пункт меню из списка!");
+                    System.out.println("Выбирете пункт меню из списка!");
                 }
             }
+
         }
     }
-
-    private static void inputTask(Scanner scanner) {
-        System.out.print("Введите название задачи: ");
-        String taskName = scanner.next();
-    }
-
     private static void printMenu() {
         System.out.println(
-                "1. Добавить задачу\n" +
-                "2. Удалить задачу\n" +
-                "3. Получить задачу на указанный день\n" +
-                "0. Выход"
+    "1. Добавить задачу" +
+    "2. Редактировать задачу" +
+    "3. Удалить задачу" +
+    "4. Получить задачи на указанный день" +
+    "5. Получить архивные задачи" +
+    "6. Получить сгруппированные по датам задачи" +
+    "0. Выход"
         );
-
     }
 }
